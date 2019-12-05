@@ -25,7 +25,8 @@ hbs.registerPartials(partialsPath)
 app.get('',(req,res) => {
     res.render('index',({
         title : 'Weather App',
-        name : 'Rahul'
+        name : 'Rahul',
+        desc : 'A site for fetching weather details!'
     }))
 })
 
@@ -48,7 +49,8 @@ app.get('/help/*', (req, res) =>{
 app.get('/about', (req,res) => {
     res.render('about', ({
         title : 'About Page',
-        name : 'Rahul'
+        name : 'Rahul',
+        desc : 'This site is created by Rahul.'
     }))
 })
 
