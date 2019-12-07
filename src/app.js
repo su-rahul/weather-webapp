@@ -55,11 +55,6 @@ app.get('/about', (req,res) => {
 })
 
 app.get('/weather',(req,res) =>{
-    if(!req.query.address){
-        return res.send({
-             error :'Please provide entry for location!'
-        })
-    }
     geocode(req.query.address,(error,{latitude, longitude, place} = {}) => {
         if(error){
             return res.send(error)
