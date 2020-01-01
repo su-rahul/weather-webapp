@@ -1,8 +1,14 @@
 const weatherForm = document.querySelector('form');
-const search = document.querySelector('input')
+const search = document.querySelector('#autocomplete')
 const message1 = document.querySelector('#message1')
 const message2 = document.querySelector('#message2')
 const autoDetect = document.querySelector('#radio')
+
+const fToC = (fahrenheit) =>
+{
+  const C = (fahrenheit - 32) * 5 / 9;
+  return C.toFixed(2)
+} 
 
 weatherForm.addEventListener('submit', (e) => {
 
@@ -49,7 +55,7 @@ autoDetect.addEventListener('click', (e) => {
               search.value = county;
             })
           })
-          message2.textContent = data.daily.summary + ' It is currently ' + data.currently.temperature + ' degrees out. The high temperature is ' + data.daily.data[0].temperatureHigh + ' and the low temperature is ' + data.daily.data[0].temperatureLow + '. There is a ' + data.currently.precipProbability + '% chance of rain.'
+          message2.textContent = data.daily.summary + ' It is currently ' + fToC(data.currently.temperature) + '°C out. The high temperature is ' + fToC(data.daily.data[0].temperatureHigh) + '°C and the low temperature is ' + fToC(data.daily.data[0].temperatureLow) + '°C. There is a ' + data.currently.precipProbability + '% chance of rain.'
         }
       })
     })

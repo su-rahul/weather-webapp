@@ -6,6 +6,8 @@
     <title>{{title}}</title>
     <link rel = 'stylesheet' href = 'css/styles.css'>
     <link rel = 'icon' href = '/img/weather.png'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 </head>
 
 <body>
@@ -14,7 +16,15 @@
         <p>{{desc}}</p>
 
         <form>
-            <input type = 'text' placeholder="Location" required>
+            <input id="autocomplete" placeholder="Location" type="text"></input>
+            <script>
+                var autocomplete;
+                function initAutocomplete() {
+                autocomplete = new google.maps.places.Autocomplete((document.getElementById('autocomplete')),{types: ['geocode']});
+                }
+            </script>
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDN2OJ54PaiUF18QHMMmQ01PrOu6TJeXzc&amp;libraries=places&amp;callback=initAutocomplete"
+            async defer></script>
             <button>Search</button>
         </form>
 
